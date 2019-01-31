@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Test-Memory </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css">
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+
+
+<body ng-app="memorygame" ng-controller="AppController">
+	<header>
+		<button class="settings-button" ng-click="data.showSettings=!data.showSettings"><i class="zmdi zmdi-settings"></i></button>
+	</header>
+	<main  ng-if="data.gameStarted" ng-cloak>
+		<div class="headline">
+			<h1>How Good Is Your Memory </h1>
+
+		</div>
+		<div class="statistics">
+			<h3>Difficulty</h3>
+			<h5>{{data.level}}</h5>
+			<h3>Moves</h3>
+			<h5>{{data.moves}}</h5>
+		</div>
+			<section class="row" ng-repeat="rows in data.tiles">
+				<figure class="tile" ng-repeat="tile in rows" ng-class="{loaded:tile.loaded, flipped:tile.flipped, paired:tile.paired}">
+					<div class="faces" ng-model="tile" tile>
+						<div class="back"></div>
+						<div class="front"><i class="zmdi zmdi-{{tile.icon}}"></i></div>
+					</div>
+				</figure>
+			</section>
+	</main>
+	<div class="backdrop" ng-class="{show:!data.gameStarted || data.showSettings, gameover:data.gameOver}">
+		<dialog>
+			<div class="score">
+				<h1>Game over!</h1>
+				<h4>Your score: {{data.score}}</h4>
+				<button ng-click="data.gameOver=false">Play Again</button>
+			</div>
+			<div class="settings">
+				<p>Pick a difficulty</p>
+				<button ng-click="service.startGame('easy')">Easy</button>
+				<button ng-click="service.startGame('medium')">Medium</button>
+				<button ng-click="service.startGame('hard')">Hard</button>
+			</div>
+		</dialog>
+	</div>
+</body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js'></script>
+<script src='https://code.angularjs.org/1.4.1/angular-animate.js'></script>
+
+
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

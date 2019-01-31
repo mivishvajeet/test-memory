@@ -1,0 +1,205 @@
+body {
+  background: #e4e4e4;
+}
+body header {
+  background: #18d4ff;
+  height: 250px;
+}
+body header .settings-button {
+  position: absolute;
+  top: 225px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  line-height: 52px;
+  font-size: 30px;
+  color: #fff;
+  background: #ec911f;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  transition: background 0.5s, -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, background 0.5s;
+  transition: transform 0.5s ease-in-out, background 0.5s, -webkit-transform 0.5s ease-in-out;
+}
+body header .settings-button:hover {
+  background: #f2b262;
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}
+body main {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  padding: 50px;
+  margin-bottom: 50px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  white-space: nowrap;
+  box-sizing: border-box;
+  vertical-align: middle;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 2px 5px 2px rgba(0,0,0,0.2);
+}
+body main .headline,
+body main .statistics {
+  position: absolute;
+  top: -170px;
+  left: 0;
+  text-align: left;
+  vertical-align: top;
+  line-height: 25px;
+}
+body main .headline h1,
+body main .statistics h1,
+body main .headline h3,
+body main .statistics h3,
+body main .headline h4,
+body main .statistics h4,
+body main .headline h5,
+body main .statistics h5 {
+  margin: 5px;
+  text-transform: capitalize;
+}
+body main .statistics {
+  text-align: right;
+  left: initial;
+  right: 0;
+}
+body main .row {
+  font-size: 0;
+}
+body main .row .tile {
+  display: inline-block;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+body main .row .tile.loaded {
+  -webkit-animation: bounceIn 1s;
+          animation: bounceIn 1s;
+  opacity: 1;
+}
+body main .row .tile.loaded .faces {
+  margin: 15px;
+}
+body main .row .tile.loaded .faces .front,
+body main .row .tile.loaded .faces .back {
+  border-radius: 55px;
+}
+body main .row .tile.paired {
+  -webkit-animation: zoomOut 1s 1s;
+          animation: zoomOut 1s 1s;
+  transition: opacity 1s 1s;
+  opacity: 0;
+}
+body main .row .tile.ng-leave {
+  -webkit-animation: flipOutX 1s;
+          animation: flipOutX 1s;
+}
+body main .row .tile.flipped .faces {
+  -webkit-transform: rotateY(180deg) translateY(0px);
+          transform: rotateY(180deg) translateY(0px);
+}
+body main .row .tile .faces {
+  margin: 0;
+  position: relative;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  font-size: 40px;
+}
+body main .row .tile .faces,
+body main .row .tile .faces .front,
+body main .row .tile .faces .back {
+  width: 100px;
+  height: 100px;
+}
+body main .row .tile .faces .front {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  background: #e4e4e4;
+}
+body main .row .tile .faces .back {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+  background: #18d4ff;
+}
+body main .row .tile .faces .back:hover {
+  background: #5de1ff;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  box-shadow: 0 8px 20px 1px rgba(0,0,0,0.2);
+  transition: box-shadow 0.5s, background 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, box-shadow 0.5s, background 0.5s;
+  transition: transform 0.5s, box-shadow 0.5s, background 0.5s, -webkit-transform 0.5s;
+}
+body main .row .tile .faces .front,
+body main .row .tile .faces .back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+  color: #000;
+  box-shadow: 0 2px 5px 2px rgba(0,0,0,0.2);
+  line-height: 100px;
+  transition: border-radius 1s ease-out;
+}
+body .backdrop {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+body .backdrop .score {
+  display: none;
+}
+body .backdrop.show {
+  opacity: 1;
+  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+}
+body .backdrop.show dialog {
+  display: block;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background: #e4e4e4;
+  text-align: center;
+  padding: 20px;
+  border: 0;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.6);
+}
+body .backdrop.show dialog button {
+  display: block;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  color: #fff;
+  background: #18d4ff;
+  border: none;
+  border-radius: 5px;
+  transition: background 0.5s;
+}
+body .backdrop.show dialog button:hover {
+  background: #5de1ff;
+}
+body .backdrop.show dialog button:last-child {
+  margin-bottom: 0;
+}
+body .backdrop.show.gameover .score {
+  display: block;
+}
+body .backdrop.show.gameover .settings {
+  display: none;
+}
